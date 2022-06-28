@@ -1,11 +1,12 @@
 import React from 'react';
 import AdapterJalali from '@date-io/date-fns-jalali';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import faLocale from 'date-fns-jalali/locale/fa-jalali-IR';
+
+import Button from './components/Button';
 
 interface TimelineCalendarProps {
   /**
@@ -24,7 +25,7 @@ const TimelineCalendar = ({ label, ...props }: TimelineCalendarProps) => {
         <Box
           sx={{
             position: 'absolute',
-            paddingTop: 5,
+            paddingTop: 8,
             boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.16)',
             borderRadius: 6.25,
             background: '#fff',
@@ -51,12 +52,7 @@ const TimelineCalendar = ({ label, ...props }: TimelineCalendarProps) => {
         </Box>
       )}
 
-      <Button
-        style={{ position: 'relative', zIndex: 2, margin: 10 }}
-        onClick={() => setIsOpen(prev => !prev)}
-        variant="outlined"
-        {...props}
-      >
+      <Button isOpen={isOpen} onClick={() => setIsOpen(prev => !prev)} {...props}>
         {label}
       </Button>
     </Box>

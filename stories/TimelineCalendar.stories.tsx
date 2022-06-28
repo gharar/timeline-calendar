@@ -5,6 +5,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TimelineCalendar from '../src';
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#9D41FF',
+    },
+  },
   direction: 'rtl',
 });
 
@@ -23,5 +28,5 @@ const Template: ComponentStory<typeof TimelineCalendar> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Button',
+  label: 'زمان بندی',
 };
