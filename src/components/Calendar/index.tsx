@@ -30,7 +30,15 @@ const Calendar = ({ value, onChange }: CalendarProps) => {
           value={value}
           onChange={onChange}
           renderInput={() => <></>}
-          renderDay={(_day, _value, pickersDayProps) => <CalendarDay {...pickersDayProps} />}
+          renderDay={(_day, _value, pickersDayProps) => (
+            <CalendarDay
+              {...pickersDayProps}
+              timeSpans={[
+                { start: new Date(), end: new Date() },
+                { start: new Date(), end: new Date() },
+              ]}
+            />
+          )}
           componentsProps={{
             switchViewButton: {
               style: {

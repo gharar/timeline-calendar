@@ -2,25 +2,38 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { PickersDayProps } from '@mui/x-date-pickers';
 
+import TimeList from './TimeList';
 import {
   calendarDayContainerStyles,
   calendarDayNumberStyles,
   calendarDayWrapperStyles,
 } from './styles';
 
-interface CalendarDayProps extends PickersDayProps<Date> {}
+interface CalendarDayProps extends PickersDayProps<Date> {
+  /**
+   * List of time spans
+   */
+  timeSpans: { start: Date; end: Date }[];
+}
 
-const CalendarDay = ({ day, disabled, outsideCurrentMonth, today }: CalendarDayProps) => {
+const CalendarDay = ({
+  day,
+  disabled,
+  outsideCurrentMonth,
+  today,
+  timeSpans,
+}: CalendarDayProps) => {
   return (
     <Box sx={calendarDayWrapperStyles} aria-disabled={disabled} aria-hidden={outsideCurrentMonth}>
       {!outsideCurrentMonth && (
         <>
           <Box sx={calendarDayContainerStyles(disabled)}>
-            <Box sx={calendarDayNumberStyles(disabled, today)}>
+            <Box sx={calendarDayNumberStyles(disabled, today, timeSpans.length > 0)}>
               {day.toLocaleDateString('fa-IR', { day: 'numeric' })}
             </Box>
           </Box>
-          <Box sx={{ position: 'absolute' }}>...</Box>
+
+          <TimeList timeSpans={timeSpans} />
         </>
       )}
     </Box>

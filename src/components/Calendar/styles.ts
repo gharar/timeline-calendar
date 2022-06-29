@@ -8,33 +8,45 @@ export const calendarStyles: SxProps = {
   position: 'absolute',
   mt: -2,
   pt: 13.5,
+  pb: 1,
   boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.16)',
   borderRadius: 6.25,
   backgroundColor: '#fff',
-  overflow: 'hidden',
 
   // Calendar
-  '& > div': {
+  '& .MuiPickerStaticWrapper-root': {
     minWidth: DAY_WIDTH * 7 + 20,
     alignItems: 'center',
   },
-  '& > div > div, & > div > div > div > div, & .MuiCalendarPicker-root': {
+  '& .MuiPickerStaticWrapper-content': {
+    overflowX: 'clip',
+    overflowY: 'visible',
+  },
+  '& > div > div > div > div, & .MuiCalendarPicker-root': {
     width: DAY_WIDTH * 7,
   },
   '& > div > div > div > div, & > div > div > div > div > div': {
     minHeight: DAY_HEIGHT * 6 + 160,
+    overflow: 'visible',
   },
-  '& .MuiCalendarPicker-root > div:first-of-type': {
-    position: 'relative',
-    mx: 3.5,
-    my: 3,
-    px: 0,
+  '& .MuiCalendarPicker-root': {
+    overflow: 'visible',
+
+    '& > div:first-of-type': {
+      position: 'relative',
+      mx: 3.5,
+      my: 3,
+      px: 0,
+    },
   },
   '& .MuiCalendarPicker-root > div > div:first-of-type': {
     margin: 'auto',
     zIndex: 1,
     fontSize: 18,
     fontWeight: 700,
+  },
+  '& .MuiCalendarPicker-viewTransitionContainer': {
+    overflowY: 'visible',
   },
   '& .MuiPickersArrowSwitcher-root': {
     position: 'absolute',
@@ -51,6 +63,11 @@ export const calendarStyles: SxProps = {
   },
   '& .PrivatePickersSlideTransition-root': {
     minHeight: DAY_HEIGHT * 6,
+    overflow: 'visible',
+
+    '& [role="grid"]': {
+      overflow: 'visible',
+    },
 
     '& [role="row"]': {
       m: 0,
@@ -80,7 +97,7 @@ export const calendarStyles: SxProps = {
   },
 };
 
-export const calendarDayWrapperStyles: SxProps = { width: 95, height: 67 };
+export const calendarDayWrapperStyles: SxProps = { position: 'relative', width: 95, height: 67 };
 
 export const calendarDayContainerStyles = (disabled?: boolean): SxProps => ({
   height: 32,
@@ -92,7 +109,11 @@ export const calendarDayContainerStyles = (disabled?: boolean): SxProps => ({
   }),
 });
 
-export const calendarDayNumberStyles = (disabled?: boolean, today?: boolean): SxProps => ({
+export const calendarDayNumberStyles = (
+  disabled?: boolean,
+  today?: boolean,
+  hasTimeSpan?: boolean
+): SxProps => ({
   height: 22,
   width: 22,
   borderRadius: '50%',
@@ -106,4 +127,66 @@ export const calendarDayNumberStyles = (disabled?: boolean, today?: boolean): Sx
     color: '#fff',
     backgroundColor: 'primary.main',
   }),
+  ...(hasTimeSpan && {
+    fontWeight: 700,
+  }),
 });
+
+export const timeListContainerStyles: SxProps = {
+  height: 30,
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+};
+
+export const timeListStackBottomStyles: SxProps = {
+  position: 'absolute',
+  left: 1,
+  bottom: 0,
+  width: 86,
+  height: 22,
+  backgroundColor: '#fff',
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: 'primary.main',
+  borderRadius: '5px',
+};
+
+export const timeListStackTopStyles = (isOpen: boolean): SxProps => ({
+  position: 'absolute',
+  left: 4,
+  bottom: 4,
+  opacity: isOpen ? 0.2 : 1,
+});
+
+export const timeListDropDownStyles: SxProps = {
+  position: 'absolute',
+  top: 4,
+  left: 0,
+  right: 0,
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  px: 0.5,
+  py: 0.25,
+  backgroundColor: '#fff',
+  borderRadius: '6px',
+  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15))',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  zIndex: 1000,
+};
+
+export const timeListItemStyles: SxProps = {
+  width: 88,
+  height: 24,
+  backgroundColor: 'primary.main',
+  color: '#fff',
+  borderRadius: '5px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 12,
+  fontWeight: 700,
+};
