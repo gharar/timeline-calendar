@@ -34,6 +34,7 @@ const Button = ({ isOpen, onClick, children, ...props }: ButtonProps) => {
         fontWeight: 700,
         justifyContent: 'space-between',
         boxShadow: theme => (isOpen ? `0 0 0 2px ${theme.palette.primary.main}` : 'none'),
+        borderColor: 'primary.main',
       }}
       onClick={onClick}
       variant="outlined"
