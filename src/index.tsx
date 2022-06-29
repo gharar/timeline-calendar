@@ -12,7 +12,7 @@ interface TimelineCalendarProps {
 }
 
 const TimelineCalendar = ({ label, ...props }: TimelineCalendarProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
   const [value, setValue] = React.useState<Date | null>(new Date());
 
   return (

@@ -7,6 +7,7 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import faLocale from 'date-fns-jalali/locale/fa-jalali-IR';
 
 import { calendarStyles } from './styles';
+import CalendarDay from './CalendarDay';
 
 interface CalendarProps {
   /**
@@ -25,12 +26,11 @@ const Calendar = ({ value, onChange }: CalendarProps) => {
       <LocalizationProvider dateAdapter={AdapterJalali} adapterLocale={faLocale}>
         <StaticDatePicker
           displayStaticWrapperAs="desktop"
+          readOnly
           value={value}
           onChange={onChange}
           renderInput={() => <></>}
-          // renderDay={(day, _value, DayComponentProps) => {
-          //   return <PickersDay {...DayComponentProps} />;
-          // }}
+          renderDay={(_day, _value, pickersDayProps) => <CalendarDay {...pickersDayProps} />}
           componentsProps={{
             switchViewButton: {
               style: {

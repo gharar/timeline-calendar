@@ -24,13 +24,13 @@ export const calendarStyles: SxProps = {
   '& > div > div > div > div, & > div > div > div > div > div': {
     minHeight: DAY_HEIGHT * 6 + 160,
   },
-  '& .MuiCalendarPicker-root > div:first-child': {
+  '& .MuiCalendarPicker-root > div:first-of-type': {
     position: 'relative',
     mx: 3.5,
     my: 3,
     px: 0,
   },
-  '& .MuiCalendarPicker-root > div > div:first-child': {
+  '& .MuiCalendarPicker-root > div > div:first-of-type': {
     margin: 'auto',
     zIndex: 1,
     fontSize: 18,
@@ -51,10 +51,24 @@ export const calendarStyles: SxProps = {
   },
   '& .PrivatePickersSlideTransition-root': {
     minHeight: DAY_HEIGHT * 6,
-  },
-  '& .PrivatePickersSlideTransition-root [role="row"]': {
-    m: 0,
-    borderTop: '1px solid #e0e0e0',
+
+    '& [role="row"]': {
+      m: 0,
+      borderTop: '1px solid #e0e0e0',
+
+      '& > div:first-of-type, & > [aria-disabled="false"] + [aria-disabled="true"], & > [aria-hidden="true"] + [aria-disabled="true"]':
+        {
+          '& > div:first-of-type': {
+            borderEndStartRadius: 10,
+          },
+        },
+
+      '& > div:last-child': {
+        '& > div:first-of-type': {
+          borderEndEndRadius: 10,
+        },
+      },
+    },
   },
   '& .MuiPickersDay-dayWithMargin': {
     m: 0,
@@ -65,3 +79,31 @@ export const calendarStyles: SxProps = {
     fontSize: 14,
   },
 };
+
+export const calendarDayWrapperStyles: SxProps = { width: 95, height: 67 };
+
+export const calendarDayContainerStyles = (disabled?: boolean): SxProps => ({
+  height: 32,
+  display: 'flex',
+  justifyContent: 'center',
+  pt: 1,
+  ...(disabled && {
+    backgroundColor: '#D9D9D950',
+  }),
+});
+
+export const calendarDayNumberStyles = (disabled?: boolean, today?: boolean): SxProps => ({
+  height: 22,
+  width: 22,
+  borderRadius: '50%',
+  textAlign: 'center',
+  fontWeight: 300,
+  userSelect: 'none',
+  ...(disabled && {
+    color: '#9E9E9E',
+  }),
+  ...(today && {
+    color: '#fff',
+    backgroundColor: 'primary.main',
+  }),
+});
