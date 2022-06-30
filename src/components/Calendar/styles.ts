@@ -8,7 +8,7 @@ export const calendarStyles: SxProps = {
   position: 'absolute',
   mt: -2,
   pt: 13.5,
-  pb: 1,
+  pb: 3,
   boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.16)',
   borderRadius: 6.25,
   backgroundColor: '#fff',
@@ -23,7 +23,7 @@ export const calendarStyles: SxProps = {
     overflowY: 'visible',
   },
   '& > div > div > div > div, & .MuiCalendarPicker-root': {
-    width: DAY_WIDTH * 7,
+    width: DAY_WIDTH * 7 + 20,
   },
   '& > div > div > div > div, & > div > div > div > div > div': {
     minHeight: DAY_HEIGHT * 6 + 160,
@@ -70,7 +70,8 @@ export const calendarStyles: SxProps = {
     },
 
     '& [role="row"]': {
-      m: 0,
+      my: 0,
+      mx: 1.25,
       borderTop: '1px solid #e0e0e0',
 
       '& > div:first-of-type, & > [aria-disabled="false"] + [aria-disabled="true"], & > [aria-hidden="true"] + [aria-disabled="true"]':
@@ -171,7 +172,7 @@ export const timeListDropDownStyles: SxProps = {
   py: 0.25,
   backgroundColor: '#fff',
   borderRadius: '6px',
-  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15))',
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

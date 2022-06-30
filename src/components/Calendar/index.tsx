@@ -36,6 +36,7 @@ const Calendar = ({ value, onChange }: CalendarProps) => {
               timeSpans={[
                 { start: new Date(), end: new Date() },
                 { start: new Date(), end: new Date() },
+                { start: new Date(), end: new Date() },
               ]}
             />
           )}
