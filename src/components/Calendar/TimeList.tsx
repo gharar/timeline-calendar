@@ -41,7 +41,10 @@ const TimeList = ({ timeSpans }: TimeListProps) => {
         <Box sx={timeListDropDownStyles}>
           {timeSpans.map((timeSpan, index) => {
             return (
-              <Box sx={{ py: 0.25 }}>
+              <Box
+                key={`${timeSpan.start.toISOString()}-${timeSpan.end.toISOString()}`}
+                sx={{ py: 0.25 }}
+              >
                 <TimeListItem key={index} start={timeSpan.start} end={timeSpan.end} />
               </Box>
             );
