@@ -37,13 +37,15 @@ export const calendarStyles: SxProps = {
       mx: 3.5,
       my: 3,
       px: 0,
+
+      '& > div:first-of-type': {
+        margin: 'auto',
+        zIndex: 1,
+        fontSize: 18,
+        fontWeight: 700,
+        cursor: 'default',
+      },
     },
-  },
-  '& .MuiCalendarPicker-root > div > div:first-of-type': {
-    margin: 'auto',
-    zIndex: 1,
-    fontSize: 18,
-    fontWeight: 700,
   },
   '& .MuiCalendarPicker-viewTransitionContainer': {
     overflowY: 'visible',
@@ -117,6 +119,7 @@ export const calendarDayNumberStyles = (
 ): SxProps => ({
   height: 22,
   width: 22,
+  lineHeight: '22px',
   borderRadius: '50%',
   textAlign: 'center',
   fontWeight: 300,

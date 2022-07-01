@@ -1,13 +1,11 @@
 import React from 'react';
-import AdapterJalali from '@date-io/date-fns-jalali';
 import Box from '@mui/material/Box';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import faLocale from 'date-fns-jalali/locale/fa-jalali-IR';
 
 import { calendarStyles } from './styles';
 import CalendarDay from './CalendarDay';
+import { CustomAdapterJalali } from './utils';
 
 interface CalendarProps {
   /**
@@ -23,11 +21,12 @@ interface CalendarProps {
 const Calendar = ({ value, onChange }: CalendarProps) => {
   return (
     <Box sx={calendarStyles}>
-      <LocalizationProvider dateAdapter={AdapterJalali} adapterLocale={faLocale}>
+      <LocalizationProvider dateAdapter={CustomAdapterJalali}>
         <StaticDatePicker
           displayStaticWrapperAs="desktop"
           readOnly
           value={value}
+          views={['day']}
           onChange={onChange}
           renderInput={() => <></>}
           renderDay={(_day, _value, pickersDayProps) => (
