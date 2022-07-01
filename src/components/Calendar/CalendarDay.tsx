@@ -11,7 +11,7 @@ import {
 
 interface CalendarDayProps extends PickersDayProps<Date> {
   /**
-   * List of time spans
+   * Array of time spans
    */
   timeSpans: { start: Date; end: Date }[];
 }
@@ -33,7 +33,7 @@ const CalendarDay = ({
             </Box>
           </Box>
 
-          <TimeList timeSpans={timeSpans} />
+          {timeSpans.length > 0 && <TimeList timeSpans={timeSpans} />}
         </>
       )}
     </Box>

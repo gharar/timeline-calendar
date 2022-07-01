@@ -188,6 +188,7 @@ export const timeListItemStyles: SxProps = {
   backgroundColor: 'primary.main',
   color: '#fff',
   borderRadius: '5px',
+  direction: 'ltr',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

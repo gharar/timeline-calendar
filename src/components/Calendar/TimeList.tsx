@@ -9,12 +9,13 @@ import {
   timeListStackBottomStyles,
   timeListStackTopStyles,
 } from './styles';
+import { TimeSpanList } from './types';
 
 interface TimeListProps {
   /**
    * List of time spans
    */
-  timeSpans: { start: Date; end: Date }[];
+  timeSpans: TimeSpanList;
 }
 
 const TimeList = ({ timeSpans }: TimeListProps) => {

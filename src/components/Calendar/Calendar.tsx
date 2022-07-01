@@ -5,38 +5,32 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
 import { calendarStyles } from './styles';
 import CalendarDay from './CalendarDay';
-import { CustomAdapterJalali } from './utils';
+import { CustomAdapterJalali, getTimeSpansInDay, isDayDisabled } from './utils';
+import { TimeSpanList } from './types';
 
 interface CalendarProps {
   /**
-   * The value of the picker
+   * List of time spans
    */
-  value: Date | null;
-  /**
-   * Picker onChange handler
-   */
-  onChange: (value: any, keyboardInputValue?: string | undefined) => void;
+  timeSpans: TimeSpanList;
 }
 
-const Calendar = ({ value, onChange }: CalendarProps) => {
+const Calendar = ({ timeSpans }: CalendarProps) => {
   return (
     <Box sx={calendarStyles}>
       <LocalizationProvider dateAdapter={CustomAdapterJalali}>
         <StaticDatePicker
           displayStaticWrapperAs="desktop"
           readOnly
-          value={value}
           views={['day']}
-          onChange={onChange}
+          value={new Date()}
+          onChange={() => {}}
           renderInput={() => <></>}
-          renderDay={(_day, _value, pickersDayProps) => (
+          renderDay={(day, _value, pickersDayProps) => (
             <CalendarDay
               {...pickersDayProps}
-              timeSpans={[
-                { start: new Date(), end: new Date() },
-                { start: new Date(), end: new Date() },
-                { start: new Date(), end: new Date() },
-              ]}
+              timeSpans={getTimeSpansInDay(day, timeSpans)}
+              disabled={isDayDisabled(day, timeSpans)}
             />
           )}
           componentsProps={{

@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import TimelineCalendar from '../src';
+import TimelineCalendar from '../src/TimelineCalendar';
 
 const theme = createTheme({
   palette: {
@@ -29,4 +29,22 @@ const Template: ComponentStory<typeof TimelineCalendar> = args => (
 export const Default = Template.bind({});
 Default.args = {
   label: 'زمان بندی',
+  timeSpans: [
+    {
+      start: new Date('2022-07-12T05:30:00.337Z'),
+      end: new Date('2022-07-12T07:30:00.337Z'),
+    },
+    {
+      start: new Date('2022-07-12T08:30:00.337Z'),
+      end: new Date('2022-07-12T10:30:00.337Z'),
+    },
+    {
+      start: new Date('2022-07-13T08:30:00.337Z'),
+      end: new Date('2022-07-13T10:30:00.337Z'),
+    },
+    {
+      start: new Date('2022-07-18T08:30:00.337Z'),
+      end: new Date('2022-07-18T10:30:00.337Z'),
+    },
+  ],
 };
