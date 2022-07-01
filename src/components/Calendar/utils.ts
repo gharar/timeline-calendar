@@ -1,5 +1,6 @@
 import AdapterJalali from '@date-io/date-fns-jalali';
-import { addMonths } from 'date-fns-jalali';
+import addMonths from 'date-fns-jalali/addMonths';
+import startOfMonth from 'date-fns-jalali/startOfMonth';
 
 import { TimeSpanList } from './types';
 
@@ -65,6 +66,9 @@ export const isDayDisabled = (day: Date, timeSpans: TimeSpanList): boolean => {
  * @returns True if the next month has time spans
  */
 export const isNextMonthHasTimeSpans = (month: Date, timeSpans: TimeSpanList): boolean => {
-  const nextMonth = addMonths(month, 1);
-  return !isDayDisabled(nextMonth, timeSpans);
+  const nextMonth = addMonths(startOfMonth(month), 1);
+  const end = timeSpans[timeSpans.length - 1].end;
+  const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+
+  return nextMonth.getTime() <= endDate.getTime();
 };
