@@ -8,10 +8,8 @@ import { TimeSpanList } from './types';
 // From https://github.com/mui/mui-x/issues/4605#issuecomment-1105257098
 
 class CustomString extends String {
-  charAt(_: number): any {
-    return {
-      toUpperCase: () => this.valueOf(),
-    };
+  charAt(_: number): string {
+    return this.valueOf();
   }
 }
 

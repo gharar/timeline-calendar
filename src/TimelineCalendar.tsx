@@ -16,14 +16,14 @@ interface TimelineCalendarProps {
   timeSpans: TimeSpanList;
 }
 
-const TimelineCalendar = ({ label, timeSpans, ...props }: TimelineCalendarProps) => {
+const TimelineCalendar = ({ label, timeSpans }: TimelineCalendarProps) => {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       {isOpen && <Calendar timeSpans={timeSpans} />}
 
-      <Button isOpen={isOpen} onClick={() => setIsOpen(prev => !prev)} {...props}>
+      <Button isOpen={isOpen} onClick={() => setIsOpen(prev => !prev)}>
         {label}
       </Button>
     </Box>

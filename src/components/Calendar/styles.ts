@@ -150,7 +150,7 @@ export const timeListStackBottomStyles: SxProps = {
   bottom: 0,
   width: 86,
   height: 22,
-  backgroundColor: '#fff',
+  backgroundColor: 'rgba(157, 65, 255, 0.1)',
   borderWidth: 1,
   borderStyle: 'solid',
   borderColor: 'primary.main',

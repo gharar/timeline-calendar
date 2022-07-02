@@ -33,7 +33,11 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
     "babel-loader": "^8.2.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1",
     "typescript": "^4.6.3"
   }
 }

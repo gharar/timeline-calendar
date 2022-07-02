@@ -28,7 +28,7 @@ const Calendar = ({ timeSpans }: CalendarProps) => {
   // Selected Month state
   const [selectedMonth, setSelectedMonth] = React.useState(new Date());
 
-  const renderRightArrowButton = (props: any) => {
+  const renderRightArrowButton: React.ElementType = props => {
     if (isNextMonthHasTimeSpans(selectedMonth, timeSpans)) {
       return (
         <Button
@@ -50,7 +50,7 @@ const Calendar = ({ timeSpans }: CalendarProps) => {
     );
   };
 
-  const renderLeftArrowButton = (props: any) => {
+  const renderLeftArrowButton: React.ElementType = props => {
     return (
       <IconButton {...props}>
         <ChevronRightRounded htmlColor="#2C3E50" style={{ fontSize: 32 }} />
@@ -66,7 +66,7 @@ const Calendar = ({ timeSpans }: CalendarProps) => {
           readOnly
           views={['day']}
           value={selectedMonth}
-          onChange={() => {}}
+          onChange={() => undefined}
           renderInput={() => <></>}
           renderDay={(day, _value, pickersDayProps) => (
             <CalendarDay
