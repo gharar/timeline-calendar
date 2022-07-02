@@ -14,6 +14,7 @@ import {
   CustomAdapterJalali,
   getTimeSpansInDay,
   isDayDisabled,
+  isLastDisabledInRow,
   isNextMonthHasTimeSpans,
 } from '../../utils';
 
@@ -77,6 +78,7 @@ const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
               {...pickersDayProps}
               timeSpans={getTimeSpansInDay(day, timeSpans)}
               disabled={isDayDisabled(day, timeSpans)}
+              roundedEnd={isLastDisabledInRow(day, timeSpans)}
             />
           )}
           components={{

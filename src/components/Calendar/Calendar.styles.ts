@@ -106,13 +106,16 @@ export const calendarStyles: SxProps<Theme> = {
 
 export const calendarDayWrapperStyles: SxProps = { position: 'relative', width: 95, height: 67 };
 
-export const calendarDayContainerStyles = (disabled?: boolean): SxProps => ({
+export const calendarDayContainerStyles = (disabled?: boolean, roundedEnd?: boolean): SxProps => ({
   height: 32,
   display: 'flex',
   justifyContent: 'center',
   pt: 1,
   ...(disabled && {
     backgroundColor: '#D9D9D950',
+  }),
+  ...(roundedEnd && {
+    borderEndEndRadius: 10,
   }),
 });
 
@@ -199,4 +202,5 @@ export const timeListItemStyles: SxProps = {
   justifyContent: 'center',
   fontSize: 12,
   fontWeight: 700,
+  userSelect: 'none',
 };

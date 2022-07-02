@@ -1,3 +1,4 @@
+import { addDays, getDay, isLastDayOfMonth } from 'date-fns-jalali';
 import addMonths from 'date-fns-jalali/addMonths';
 import startOfMonth from 'date-fns-jalali/startOfMonth';
 
@@ -33,7 +34,6 @@ export const isDayDisabled = (day: Date, timeSpans: TimeSpanList): boolean => {
     return true;
   }
 
-  // TODO: Sort time spans by start time
   const start = timeSpans[0].start;
   const end = timeSpans[timeSpans.length - 1].end;
 
@@ -77,3 +77,25 @@ export const parseTimeSpans = (timeSpans: TimeSpanRawList): TimeSpanList =>
       return { start, end };
     })
     .sort((a, b) => a.start.getTime() - b.start.getTime());
+
+/**
+ * Check if the given day is the last disabled day in the week row (to have rounded corner)
+ *
+ * @param day The day to check
+ * @param timeSpans Available time spans
+ * @returns True if the given day is the last disabled day in the week row
+ */
+export const isLastDisabledInRow = (day: Date, timeSpans: TimeSpanList): boolean => {
+  if (isDayDisabled(day, timeSpans)) {
+    if (isLastDayOfMonth(day) || getDay(day) === 5) {
+      return true;
+    }
+
+    const nextDay = addDays(day, 1);
+    if (!isDayDisabled(nextDay, timeSpans)) {
+      return true;
+    }
+  }
+
+  return false;
+};
