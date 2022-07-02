@@ -1,9 +1,9 @@
-import { SxProps } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
 
 const DAY_WIDTH = 95;
 const DAY_HEIGHT = 67;
 
-export const calendarStyles: SxProps = {
+export const calendarStyles: SxProps<Theme> = {
   // Box
   position: 'absolute',
   mt: -2,
@@ -13,6 +13,7 @@ export const calendarStyles: SxProps = {
   borderRadius: 6.25,
   backgroundColor: '#fff',
   width: 'fit-content',
+  fontFamily: theme => theme.typography.fontFamily,
 
   // Calendar
   '& .MuiPickerStaticWrapper-root': {

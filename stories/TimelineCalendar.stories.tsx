@@ -5,12 +5,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TimelineCalendar from '../src/TimelineCalendar';
 
 const theme = createTheme({
+  direction: 'rtl',
   palette: {
     primary: {
       main: '#9D41FF',
     },
   },
-  direction: 'rtl',
+  typography: {
+    fontFamily: 'Vazirmatn, sans-serif',
+  },
 });
 
 export default {
