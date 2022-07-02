@@ -1,7 +1,7 @@
 import addMonths from 'date-fns-jalali/addMonths';
 import startOfMonth from 'date-fns-jalali/startOfMonth';
 
-import { TimeSpanList } from 'models';
+import { TimeSpanList, TimeSpanRawList } from 'models';
 
 /**
  * Filter the time spans in the given day
@@ -29,6 +29,10 @@ export const getTimeSpansInDay = (day: Date, timeSpans: TimeSpanList): TimeSpanL
  * @returns True if the given day is disabled
  */
 export const isDayDisabled = (day: Date, timeSpans: TimeSpanList): boolean => {
+  if (timeSpans.length < 1) {
+    return true;
+  }
+
   // TODO: Sort time spans by start time
   const start = timeSpans[0].start;
   const end = timeSpans[timeSpans.length - 1].end;
@@ -47,9 +51,29 @@ export const isDayDisabled = (day: Date, timeSpans: TimeSpanList): boolean => {
  * @returns True if the next month has time spans
  */
 export const isNextMonthHasTimeSpans = (month: Date, timeSpans: TimeSpanList): boolean => {
+  if (timeSpans.length < 1) {
+    return false;
+  }
+
   const nextMonth = addMonths(startOfMonth(month), 1);
   const end = timeSpans[timeSpans.length - 1].end;
   const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
 
   return nextMonth.getTime() <= endDate.getTime();
 };
+
+/**
+ * Parse dates in the given raw time spans and sort them by start time
+ *
+ * @param timeSpans Raw time spans
+ * @returns Parsed time spans
+ */
+export const parseTimeSpans = (timeSpans: TimeSpanRawList): TimeSpanList =>
+  timeSpans
+    .map(timeSpan => {
+      const start = new Date(timeSpan.start);
+      const end = new Date(timeSpan.end);
+
+      return { start, end };
+    })
+    .sort((a, b) => a.start.getTime() - b.start.getTime());

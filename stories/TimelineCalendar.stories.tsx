@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { TimeSpanRawList } from 'models';
 import TimelineCalendar from '../src/TimelineCalendar';
 
 const theme = createTheme({
@@ -70,4 +71,46 @@ Default.args = {
       end: new Date('2022-08-22T10:30:00.337Z'),
     },
   ],
+};
+
+const loadTimeSpans = () =>
+  new Promise<TimeSpanRawList>(resolve => {
+    setTimeout(() => {
+      resolve([
+        {
+          start: new Date('2022-07-23T08:30:00.337Z'),
+          end: new Date('2022-07-23T10:30:00.337Z'),
+        },
+        {
+          start: '2022-07-12T05:30:00.337Z',
+          end: new Date('2022-07-12T07:30:00.337Z'),
+        },
+        {
+          start: new Date('2022-07-18T08:30:00.337Z'),
+          end: new Date('2022-07-18T10:30:00.337Z'),
+        },
+        {
+          start: new Date('2022-07-12T08:30:00.337Z'),
+          end: new Date('2022-07-12T10:30:00.337Z'),
+        },
+        {
+          start: new Date('2022-07-13T08:30:00.337Z'),
+          end: new Date('2022-07-13T10:30:00.337Z'),
+        },
+        {
+          start: new Date('2022-08-07T23:30:00.337Z'),
+          end: new Date('2022-08-08T00:30:00.337Z'),
+        },
+        {
+          start: new Date('2022-08-07T22:30:00.337Z'),
+          end: new Date('2022-08-07T23:30:00.337Z'),
+        },
+      ]);
+    }, 2000);
+  });
+
+export const Async = Template.bind({});
+Async.args = {
+  label: 'زمان بندی',
+  timeSpans: loadTimeSpans,
 };

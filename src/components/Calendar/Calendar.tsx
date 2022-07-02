@@ -22,9 +22,13 @@ interface CalendarProps {
    * List of time spans
    */
   timeSpans: TimeSpanList;
+  /**
+   * Loading state of time spans
+   */
+  isLoading: boolean;
 }
 
-const Calendar = ({ timeSpans }: CalendarProps) => {
+const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
   // Selected Month state
   const [selectedMonth, setSelectedMonth] = React.useState(new Date());
 
@@ -82,6 +86,7 @@ const Calendar = ({ timeSpans }: CalendarProps) => {
           onMonthChange={month => {
             setSelectedMonth(month);
           }}
+          loading={isLoading}
         />
       </LocalizationProvider>
     </Box>
