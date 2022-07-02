@@ -1,4 +1,5 @@
 {
+  "homepage": "https://hassanmojab.github.io/timeline-calendar/",
   "name": "timeline-calendar",
   "private": true,
   "version": "1.0.0",
@@ -6,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "pub": "node ./scripts/publish.js"
+    "pub": "node ./scripts/publish.js",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "author": "M.Hassan Mojab",
   "license": "MIT",
@@ -38,6 +41,7 @@
     "babel-loader": "^8.2.5",
     "eslint": "^8.19.0",
     "eslint-plugin-react": "^7.30.1",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.6.3"
   }
 }
