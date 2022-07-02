@@ -2,14 +2,14 @@ import React from 'react';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Box from '@mui/material/Box';
 
+import { TimeSpanList } from 'models';
 import {
   timeListContainerStyles,
   timeListDropDownStyles,
   timeListItemStyles,
   timeListStackBottomStyles,
   timeListStackTopStyles,
-} from './styles';
-import { TimeSpanList } from './types';
+} from './Calendar.styles';
 
 interface TimeListProps {
   /**
@@ -39,16 +39,14 @@ const TimeList = ({ timeSpans }: TimeListProps) => {
 
       {isOpen && (
         <Box sx={timeListDropDownStyles}>
-          {timeSpans.map((timeSpan, index) => {
-            return (
-              <Box
-                key={`${timeSpan.start.toISOString()}-${timeSpan.end.toISOString()}`}
-                sx={{ py: 0.25 }}
-              >
-                <TimeListItem key={index} start={timeSpan.start} end={timeSpan.end} />
-              </Box>
-            );
-          })}
+          {timeSpans.map((timeSpan, index) => (
+            <Box
+              key={`${timeSpan.start.toISOString()}-${timeSpan.end.toISOString()}`}
+              sx={{ py: 0.25 }}
+            >
+              <TimeListItem key={index} start={timeSpan.start} end={timeSpan.end} />
+            </Box>
+          ))}
         </Box>
       )}
     </Box>

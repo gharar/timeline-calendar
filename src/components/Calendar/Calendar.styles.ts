@@ -12,6 +12,7 @@ export const calendarStyles: SxProps = {
   boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.16)',
   borderRadius: 6.25,
   backgroundColor: '#fff',
+  width: 'fit-content',
 
   // Calendar
   '& .MuiPickerStaticWrapper-root': {
@@ -119,7 +120,7 @@ export const calendarDayNumberStyles = (
 ): SxProps => ({
   height: 22,
   width: 22,
-  lineHeight: '22px',
+  lineHeight: '24px',
   borderRadius: '50%',
   textAlign: 'center',
   fontWeight: 300,

@@ -1,9 +1,8 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 
-import Calendar from './components/Calendar';
-import Button from './components/Button';
-import { TimeSpanList } from 'components/Calendar/types';
+import { TimeSpanList } from 'models';
+import { Button, Calendar } from './components';
 
 interface TimelineCalendarProps {
   /**

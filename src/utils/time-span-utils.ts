@@ -1,24 +1,7 @@
-import AdapterJalali from '@date-io/date-fns-jalali';
 import addMonths from 'date-fns-jalali/addMonths';
 import startOfMonth from 'date-fns-jalali/startOfMonth';
 
-import { TimeSpanList } from './types';
-
-// Customize weekdays format for calendar header
-// From https://github.com/mui/mui-x/issues/4605#issuecomment-1105257098
-
-class CustomString extends String {
-  charAt(_: number): string {
-    return this.valueOf();
-  }
-}
-
-const weekDays = ['شنبه', 'یکشنبه', 'دو‌شنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه'];
-const customWeekDays = weekDays.map(day => new CustomString(day) as string);
-
-export class CustomAdapterJalali extends AdapterJalali {
-  getWeekdays = (): string[] => customWeekDays;
-}
+import { TimeSpanList } from 'models';
 
 /**
  * Filter the time spans in the given day

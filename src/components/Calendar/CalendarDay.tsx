@@ -7,7 +7,7 @@ import {
   calendarDayContainerStyles,
   calendarDayNumberStyles,
   calendarDayWrapperStyles,
-} from './styles';
+} from './Calendar.styles';
 
 interface CalendarDayProps extends PickersDayProps<Date> {
   /**

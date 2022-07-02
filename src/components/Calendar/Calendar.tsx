@@ -7,15 +7,15 @@ import IconButton from '@mui/material/IconButton';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
-import { calendarStyles } from './styles';
+import { TimeSpanList } from 'models';
+import { calendarStyles } from './Calendar.styles';
 import CalendarDay from './CalendarDay';
 import {
   CustomAdapterJalali,
   getTimeSpansInDay,
   isDayDisabled,
   isNextMonthHasTimeSpans,
-} from './utils';
-import { TimeSpanList } from './types';
+} from '../../utils';
 
 interface CalendarProps {
   /**
