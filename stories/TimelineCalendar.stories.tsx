@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { faIR } from '@mui/material/locale';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { TimeSpanRawList } from 'models';
@@ -37,7 +39,42 @@ export default {
 const Template: ComponentStory<typeof TimelineCalendar> = args => (
   <ThemeProvider theme={theme}>
     <div dir="rtl">
-      <TimelineCalendar {...args} />
+      <Paper
+        sx={{
+          height: 500,
+          width: 236,
+          m: 'auto',
+          p: 9,
+          pt: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: '25px',
+          boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.12)',
+          fontFamily: theme => theme.typography.fontFamily,
+        }}
+      >
+        <h1 style={{ lineHeight: 2, borderBottom: '1px solid #9D41FF', opacity: 0.2 }}>عنوان</h1>
+
+        <TimelineCalendar {...args} />
+
+        <p style={{ flex: 1, opacity: 0.2 }}>
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+          است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+          تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.{' '}
+        </p>
+
+        <Button
+          variant="contained"
+          sx={{
+            height: 45,
+            borderRadius: '15px',
+            fontSize: '20px',
+            opacity: 0.2,
+          }}
+        >
+          ثبت‌نام
+        </Button>
+      </Paper>
     </div>
   </ThemeProvider>
 );
@@ -47,40 +84,40 @@ Default.args = {
   label: 'زمان بندی',
   timeSpans: [
     {
-      start: new Date('2022-07-12T05:30:00.337Z'),
-      end: new Date('2022-07-12T07:30:00.337Z'),
+      start: '2022-07-11T02:30:00.337Z',
+      end: '2022-07-11T05:30:00.337Z',
     },
     {
-      start: new Date('2022-07-12T08:30:00.337Z'),
-      end: new Date('2022-07-12T10:30:00.337Z'),
+      start: '2022-07-11T05:30:00.337Z',
+      end: '2022-07-11T07:30:00.337Z',
     },
     {
-      start: new Date('2022-07-13T08:30:00.337Z'),
-      end: new Date('2022-07-13T10:30:00.337Z'),
+      start: '2022-07-11T08:30:00.337Z',
+      end: '2022-07-11T10:30:00.337Z',
     },
     {
-      start: new Date('2022-07-18T08:30:00.337Z'),
-      end: new Date('2022-07-18T10:30:00.337Z'),
+      start: '2022-07-13T08:30:00.337Z',
+      end: '2022-07-13T10:30:00.337Z',
     },
     {
-      start: new Date('2022-07-23T08:30:00.337Z'),
-      end: new Date('2022-07-23T10:30:00.337Z'),
+      start: '2022-07-18T08:30:00.337Z',
+      end: '2022-07-18T10:30:00.337Z',
     },
     {
-      start: new Date('2022-08-07T22:30:00.337Z'),
-      end: new Date('2022-08-07T23:30:00.337Z'),
+      start: '2022-07-23T08:30:00.337Z',
+      end: '2022-07-23T10:30:00.337Z',
     },
     {
-      start: new Date('2022-08-07T23:30:00.337Z'),
-      end: new Date('2022-08-08T00:30:00.337Z'),
+      start: '2022-08-07T22:30:00.337Z',
+      end: '2022-08-07T23:30:00.337Z',
     },
     {
-      start: new Date('2022-08-08T00:30:00.337Z'),
-      end: new Date('2022-08-08T01:30:00.337Z'),
+      start: '2022-08-07T23:30:00.337Z',
+      end: '2022-08-08T00:30:00.337Z',
     },
     {
-      start: new Date('2022-08-22T08:30:00.337Z'),
-      end: new Date('2022-08-22T10:30:00.337Z'),
+      start: '2022-08-08T00:30:00.337Z',
+      end: '2022-08-08T01:30:00.337Z',
     },
   ],
 };
@@ -90,32 +127,24 @@ const loadTimeSpans = () =>
     setTimeout(() => {
       resolve([
         {
-          start: new Date('2022-07-23T08:30:00.337Z'),
-          end: new Date('2022-07-23T10:30:00.337Z'),
-        },
-        {
           start: '2022-07-12T05:30:00.337Z',
-          end: new Date('2022-07-12T07:30:00.337Z'),
+          end: '2022-07-12T07:30:00.337Z',
         },
         {
-          start: new Date('2022-07-18T08:30:00.337Z'),
-          end: new Date('2022-07-18T10:30:00.337Z'),
+          start: '2022-07-12T08:30:00.337Z',
+          end: '2022-07-12T10:30:00.337Z',
         },
         {
-          start: new Date('2022-07-12T08:30:00.337Z'),
-          end: new Date('2022-07-12T10:30:00.337Z'),
+          start: '2022-07-13T08:30:00.337Z',
+          end: '2022-07-13T10:30:00.337Z',
         },
         {
-          start: new Date('2022-07-13T08:30:00.337Z'),
-          end: new Date('2022-07-13T10:30:00.337Z'),
+          start: '2022-08-07T23:30:00.337Z',
+          end: '2022-08-08T00:30:00.337Z',
         },
         {
-          start: new Date('2022-08-07T23:30:00.337Z'),
-          end: new Date('2022-08-08T00:30:00.337Z'),
-        },
-        {
-          start: new Date('2022-08-07T22:30:00.337Z'),
-          end: new Date('2022-08-07T23:30:00.337Z'),
+          start: '2022-08-07T22:30:00.337Z',
+          end: '2022-08-07T23:30:00.337Z',
         },
       ]);
     }, 2000);

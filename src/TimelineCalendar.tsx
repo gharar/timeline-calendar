@@ -45,7 +45,7 @@ const TimelineCalendar = ({ label, timeSpans = [] }: TimelineCalendarProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Grow in={isOpen} timeout={500}>
-        <div style={{ display: 'flex', justifyContent: 'center', height: 1 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', height: 1, zIndex: 1 }}>
           <Calendar timeSpans={parsedTimeSpans} isLoading={isLoading} />
         </div>
       </Grow>

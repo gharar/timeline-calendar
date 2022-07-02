@@ -15,6 +15,7 @@ export const calendarStyles: SxProps<Theme> = {
   width: 'fit-content',
   fontFamily: theme => theme.typography.fontFamily,
   color: 'text.primary',
+  zIndex: 1,
 
   // Calendar
   '& .MuiPickerStaticWrapper-root': {

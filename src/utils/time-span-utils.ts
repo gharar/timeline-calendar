@@ -1,5 +1,7 @@
-import { addDays, getDay, isLastDayOfMonth } from 'date-fns-jalali';
+import addDays from 'date-fns-jalali/addDays';
 import addMonths from 'date-fns-jalali/addMonths';
+import getDay from 'date-fns-jalali/getDay';
+import isLastDayOfMonth from 'date-fns-jalali/isLastDayOfMonth';
 import startOfMonth from 'date-fns-jalali/startOfMonth';
 
 import { TimeSpanList, TimeSpanRawList } from 'models';
