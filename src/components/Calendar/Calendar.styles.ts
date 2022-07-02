@@ -11,9 +11,10 @@ export const calendarStyles: SxProps<Theme> = {
   pb: 3,
   boxShadow: '0px 3px 16px rgba(54, 14, 92, 0.16)',
   borderRadius: 6.25,
-  backgroundColor: '#fff',
+  backgroundColor: 'background.default',
   width: 'fit-content',
   fontFamily: theme => theme.typography.fontFamily,
+  color: 'text.primary',
 
   // Calendar
   '& .MuiPickerStaticWrapper-root': {
@@ -64,6 +65,7 @@ export const calendarStyles: SxProps<Theme> = {
     width: DAY_WIDTH,
     m: 0,
     height: 63,
+    color: 'text.secondary',
   },
   '& .PrivatePickersSlideTransition-root': {
     minHeight: DAY_HEIGHT * 6,
@@ -127,10 +129,10 @@ export const calendarDayNumberStyles = (
   fontWeight: 300,
   userSelect: 'none',
   ...(disabled && {
-    color: '#9E9E9E',
+    color: 'text.disabled',
   }),
   ...(today && {
-    color: '#fff',
+    color: 'background.default',
     backgroundColor: 'primary.main',
   }),
   ...(hasTimeSpan && {
@@ -175,20 +177,20 @@ export const timeListDropDownStyles: SxProps = {
   overflowX: 'hidden',
   px: 0.5,
   py: 0.25,
-  backgroundColor: '#fff',
+  backgroundColor: 'background.default',
   borderRadius: '6px',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  zIndex: 1000,
+  zIndex: 2,
 };
 
 export const timeListItemStyles: SxProps = {
   width: 88,
   height: 24,
   backgroundColor: 'primary.main',
-  color: '#fff',
+  color: 'background.default',
   borderRadius: '5px',
   direction: 'ltr',
   display: 'flex',

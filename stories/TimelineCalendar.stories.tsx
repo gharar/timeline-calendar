@@ -1,21 +1,33 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { faIR } from '@mui/material/locale';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { TimeSpanRawList } from 'models';
 import TimelineCalendar from '../src/TimelineCalendar';
 
-const theme = createTheme({
-  direction: 'rtl',
-  palette: {
-    primary: {
-      main: '#9D41FF',
+const theme = createTheme(
+  {
+    direction: 'rtl',
+    palette: {
+      primary: {
+        main: '#9D41FF',
+      },
+      text: {
+        primary: '#101113',
+        secondary: '#535151',
+        disabled: '#9E9E9E',
+      },
+      background: {
+        default: '#fff',
+      },
+    },
+    typography: {
+      fontFamily: 'Vazirmatn, sans-serif',
     },
   },
-  typography: {
-    fontFamily: 'Vazirmatn, sans-serif',
-  },
-});
+  faIR
+);
 
 export default {
   title: 'Example/TimelineCalendar',
