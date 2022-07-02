@@ -166,6 +166,7 @@ export const timeListStackTopStyles = (isOpen: boolean): SxProps => ({
   left: 4,
   bottom: 4,
   opacity: isOpen ? 0.2 : 1,
+  transition: isOpen ? 'opacity 0.1s ease-in-out 0.1s' : 'none',
 });
 
 export const timeListDropDownStyles: SxProps = {

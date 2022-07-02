@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Grow from '@mui/material/Grow';
 
 import { TimeSpanList, TimeSpanRawList } from 'models';
 import { Button, Calendar } from './components';
@@ -42,8 +43,12 @@ const TimelineCalendar = ({ label, timeSpans = [] }: TimelineCalendarProps) => {
   }, [isOpen]);
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      {isOpen && <Calendar timeSpans={parsedTimeSpans} isLoading={isLoading} />}
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Grow in={isOpen} timeout={500}>
+        <div style={{ display: 'flex', justifyContent: 'center', height: 1 }}>
+          <Calendar timeSpans={parsedTimeSpans} isLoading={isLoading} />
+        </div>
+      </Grow>
 
       <Button isOpen={isOpen} onClick={() => setIsOpen(prev => !prev)}>
         {label}

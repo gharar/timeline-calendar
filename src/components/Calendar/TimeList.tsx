@@ -1,6 +1,8 @@
 import React from 'react';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import Grow from '@mui/material/Grow';
 
 import { TimeSpanList } from 'models';
 import {
@@ -37,18 +39,20 @@ const TimeList = ({ timeSpans }: TimeListProps) => {
         <TimeListItem start={timeSpans[0].start} end={timeSpans[0].end} />
       </Box>
 
-      {isOpen && (
+      <Grow in={isOpen} style={{ transformOrigin: '50% 0 0' }}>
         <Box sx={timeListDropDownStyles}>
-          {timeSpans.map((timeSpan, index) => (
-            <Box
-              key={`${timeSpan.start.toISOString()}-${timeSpan.end.toISOString()}`}
-              sx={{ py: 0.25 }}
-            >
-              <TimeListItem key={index} start={timeSpan.start} end={timeSpan.end} />
-            </Box>
-          ))}
+          <Collapse in={isOpen} collapsedSize={28}>
+            {timeSpans.map((timeSpan, index) => (
+              <Box
+                key={`${timeSpan.start.toISOString()}-${timeSpan.end.toISOString()}`}
+                sx={{ py: 0.25 }}
+              >
+                <TimeListItem key={index} start={timeSpan.start} end={timeSpan.end} />
+              </Box>
+            ))}
+          </Collapse>
         </Box>
-      )}
+      </Grow>
     </Box>
   );
 };
