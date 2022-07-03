@@ -34,6 +34,11 @@ const theme = createTheme(
 export default {
   title: 'Example/TimelineCalendar',
   component: TimelineCalendar,
+  args: {
+    label: 'زمان بندی',
+    nextMonthLabel: 'جلسات ماه بعد',
+    prevMonthLabel: 'جلسات ماه قبل',
+  },
 } as ComponentMeta<typeof TimelineCalendar>;
 
 const Template: ComponentStory<typeof TimelineCalendar> = args => (
@@ -81,7 +86,6 @@ const Template: ComponentStory<typeof TimelineCalendar> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'زمان بندی',
   timeSpans: [
     {
       start: '2022-07-11T02:30:00.337Z',
@@ -146,6 +150,5 @@ const loadTimeSpans = () =>
 
 export const Async = Template.bind({});
 Async.args = {
-  label: 'زمان بندی',
   timeSpans: loadTimeSpans,
 };

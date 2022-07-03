@@ -28,9 +28,17 @@ interface CalendarProps {
    * Loading state of time spans
    */
   isLoading: boolean;
+  /**
+   * Next month button label
+   */
+  nextMonthLabel: string;
+  /**
+   * Previous month button label
+   */
+  prevMonthLabel: string;
 }
 
-const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
+const Calendar = ({ timeSpans, isLoading, nextMonthLabel, prevMonthLabel }: CalendarProps) => {
   // Selected Month state
   const [selectedMonth, setSelectedMonth] = React.useState(new Date());
 
@@ -44,13 +52,13 @@ const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
           dir="ltr"
           {...props}
         >
-          جلسات ماه بعد
+          {nextMonthLabel}
         </Button>
       );
     }
 
     return (
-      <IconButton {...props}>
+      <IconButton {...props} title="ماه بعد">
         <ChevronLeftRounded htmlColor="#2C3E50" style={{ fontSize: 32 }} />
       </IconButton>
     );
@@ -66,13 +74,13 @@ const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
           dir="ltr"
           {...props}
         >
-          جلسات ماه قبل
+          {prevMonthLabel}
         </Button>
       );
     }
 
     return (
-      <IconButton {...props}>
+      <IconButton {...props} title="ماه قبل">
         <ChevronRightRounded htmlColor="#2C3E50" style={{ fontSize: 32 }} />
       </IconButton>
     );
