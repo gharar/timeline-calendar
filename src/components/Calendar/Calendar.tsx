@@ -16,6 +16,7 @@ import {
   isDayDisabled,
   isLastDisabledInRow,
   isNextMonthHasTimeSpans,
+  isPreviousMonthHasTimeSpans,
 } from '../../utils';
 
 interface CalendarProps {
@@ -56,6 +57,20 @@ const Calendar = ({ timeSpans, isLoading }: CalendarProps) => {
   };
 
   const renderLeftArrowButton: React.ElementType = props => {
+    if (isPreviousMonthHasTimeSpans(selectedMonth, timeSpans)) {
+      return (
+        <Button
+          variant="text"
+          endIcon={<ChevronRightRounded style={{ fontSize: 32 }} />}
+          sx={{ fontSize: 12 }}
+          dir="ltr"
+          {...props}
+        >
+          جلسات ماه قبل
+        </Button>
+      );
+    }
+
     return (
       <IconButton {...props}>
         <ChevronRightRounded htmlColor="#2C3E50" style={{ fontSize: 32 }} />

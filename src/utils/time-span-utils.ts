@@ -1,8 +1,8 @@
 import addDays from 'date-fns-jalali/addDays';
-import addMonths from 'date-fns-jalali/addMonths';
 import getDay from 'date-fns-jalali/getDay';
 import isLastDayOfMonth from 'date-fns-jalali/isLastDayOfMonth';
 import startOfMonth from 'date-fns-jalali/startOfMonth';
+import endOfMonth from 'date-fns-jalali/endOfMonth';
 
 import { TimeSpanList, TimeSpanRawList } from 'models';
 
@@ -16,12 +16,9 @@ import { TimeSpanList, TimeSpanRawList } from 'models';
 export const getTimeSpansInDay = (day: Date, timeSpans: TimeSpanList): TimeSpanList =>
   timeSpans.filter(timeSpan => {
     const start = timeSpan.start;
-    const end = timeSpan.end;
-
     const startDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-    const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
 
-    return startDate.getTime() <= day.getTime() && endDate.getTime() >= day.getTime();
+    return startDate.getTime() === day.getTime();
   });
 
 /**
@@ -37,7 +34,7 @@ export const isDayDisabled = (day: Date, timeSpans: TimeSpanList): boolean => {
   }
 
   const start = timeSpans[0].start;
-  const end = timeSpans[timeSpans.length - 1].end;
+  const end = timeSpans[timeSpans.length - 1].start;
 
   const startDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
   const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
@@ -57,11 +54,28 @@ export const isNextMonthHasTimeSpans = (month: Date, timeSpans: TimeSpanList): b
     return false;
   }
 
-  const nextMonth = addMonths(startOfMonth(month), 1);
-  const end = timeSpans[timeSpans.length - 1].end;
-  const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const monthEnd = endOfMonth(month);
+  const lastTimeSpanStart = timeSpans[timeSpans.length - 1].start;
 
-  return nextMonth.getTime() <= endDate.getTime();
+  return monthEnd.getTime() < lastTimeSpanStart.getTime();
+};
+
+/**
+ * Check if the previous month has time spans
+ *
+ * @param month The current month
+ * @param timeSpans Available time spans
+ * @returns True if the previous month has time spans
+ */
+export const isPreviousMonthHasTimeSpans = (month: Date, timeSpans: TimeSpanList): boolean => {
+  if (timeSpans.length < 1) {
+    return false;
+  }
+
+  const monthStart = startOfMonth(month);
+  const firstTimeSpanStart = timeSpans[0].start;
+
+  return monthStart.getTime() > firstTimeSpanStart.getTime();
 };
 
 /**
